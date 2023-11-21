@@ -1,0 +1,13 @@
+Explanation:
+This part performs a similar operation as the first part but adds a pivot transformation.
+It calculates monthly sums for the Montant_global column using a CASE statement to account for the presence of the regul table and its conditions.
+The PIVOT operation transforms the result set into a pivot table where months are columns.
+The outer query selects the results, giving a tabular representation with columns for each month.
+The result is ordered by cat.
+In summary, the entire query combines data from the Pointage, sous_famille, and regul tables calculates aggregated values, and presents the results in a structured format, both by date and by month. The final output is ordered by category (cat).
+
+Detailed Explanation:
+SELECT cat, [1] AS Jan, [2] AS Feb, ...: This selects the category and the monthly sums as columns for each month using the PIVOT operation.
+FROM (...: This part consists of a subquery that retrieves the necessary data, including month-wise sums. The results are then used for pivoting.
+PIVOT (SUM(montant_global) FOR date IN ([1], [2], [3], ... [12])) AS pvtMonth: This transforms the result set into a pivot table where the months become columns, and the Montant_global values are aggregated.
+ORDER BY cat: Orders the final result set by category.
