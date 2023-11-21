@@ -1,0 +1,14 @@
+Explanation:
+This part retrieves data from the Pointage table and performs a LEFT JOIN with the sous_famille table based on the condition that the first 5 characters of Pointage.code_mat match sous_famille.code_sfamille.
+It calculates the sum of v_h_sv + v_h_ch as Montant_global.
+The DISTINCT keyword ensures unique combinations of cat and date.
+The UNION operator combines the results of two SELECT statements.
+The second part of the UNION ensures that all distinct categories (cat) are included even if they have no corresponding records in the Pointage table for the specified year (2022).
+The final result is ordered by cat and date.
+Detailed Explanation:
+SELECT DISTINCT sous_famille.cat AS cat, ...: This selects distinct categories (cat), calculates the sum of v_h_sv + v_h_ch as Montant_global, and includes the date.
+FROM Pointage LEFT JOIN sous_famille ON ...: The LEFT JOIN retrieves records from the Pointage table and matches them with the sous_famille table based on the first 5 characters of Pointage.code_mat and sous_famille.code_sfamille.
+WHERE YEAR(date) = 2022 AND cat IS NOT NULL: Filters the results to include only records from the year 2022 where the category (cat) is not null.
+GROUP BY cat, date: Groups the results by category and date, preparing them for aggregation.
+UNION: Combines the results of the two SELECT statements. It ensures that all distinct categories are included, even if they have no corresponding records in the Pointage table for the specified year (2022).
+ORDER BY cat, DATE: Orders the final result set by category and date.
