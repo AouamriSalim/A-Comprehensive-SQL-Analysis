@@ -1,6 +1,6 @@
 
-# Haikus for Codespaces
+This Advanced SQL query is a comprehensive data retrieval and aggregation operation involving multiple tables. The first part utilizes a LEFT JOIN between the Pointage and sous_famille tables, calculating the sum of certain values for distinct categories (cat) and dates in the year 2022. A UNION is employed to include categories with no corresponding records in the Pointage table and the final result is ordered by category and date.
 
-This is a quick node project template for demoing Codespaces. It is based on the [Azure node sample](https://github.com/Azure-Samples/nodejs-docs-hello-world). It's great!!!
+The second part extends the query to include monthly aggregations for the year 2022. It involves a subquery that calculates monthly sums, considering conditions from the regul table. The results are then pivoted to transform the data into a structured format with categories and monthly columns. The output is ordered by category.
 
-Point your browser to [Quickstart for GitHub Codespaces](https://docs.github.com/en/codespaces/getting-started/quickstart) for a tour of using Codespaces with this repo.
+In essence, this query provides a detailed analysis of financial data, presenting both date-specific and month-specific aggregated values for distinct categories from the specified tables.
